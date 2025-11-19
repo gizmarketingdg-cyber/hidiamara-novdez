@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Calendário Editorial - Dra. Hidiamara Gomes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #F5F0E8 0%, #E8DDD4 100%); color: #4A2C2A; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(125, 60, 74, 0.15); overflow: hidden; }
+        header { background: linear-gradient(135deg, #7D3C4A 0%, #5A2B35 100%); color: white; padding: 40px 30px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 600; }
+        header p { font-size: 1.2em; opacity: 0.95; margin-bottom: 5px; }
+        .subtitle { font-size: 0.95em; opacity: 0.85; margin-top: 15px; }
+        .nav-menu { background: #5A2B35; padding: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-menu a { background: #7D3C4A; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
+        .nav-menu a:hover { background: #C9A86A; transform: translateY(-2px); }
+        .content { padding: 40px 30px; }
+        .post-card { background: #FAFAF8; border-left: 5px solid #7D3C4A; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .post-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(125, 60, 74, 0.15); }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .post-title { font-size: 1.8em; color: #7D3C4A; font-weight: 600; }
+        .post-type { background: #9CAF88; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; font-weight: 500; }
+        .post-type.reel { background: #C9A86A; }
+        .post-type.carrossel { background: #7D3C4A; }
+        .post-type.estatico { background: #9CAF88; }
+        .post-section { margin: 20px 0; }
+        .post-section h3 { color: #5A2B35; margin-bottom: 12px; font-size: 1.3em; display: flex; align-items: center; gap: 8px; }
+        .post-section h3:before { content: "✨"; }
+        .roteiro-item { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 3px solid #C9A86A; }
+        .roteiro-item strong { color: #7D3C4A; display: block; margin-bottom: 5px; }
+        .slide { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; border: 2px solid #F5F0E8; }
+        .slide-number { background: #7D3C4A; color: white; padding: 5px 12px; border-radius: 15px; display: inline-block; margin-bottom: 10px; font-size: 0.85em; font-weight: 600; }
+        .legenda-box { background: #F5F0E8; padding: 20px; border-radius: 10px; margin: 15px 0; white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8; }
+        .cta-box { background: linear-gradient(135deg, #7D3C4A 0%, #5A2B35 100%); color: white; padding: 15px 20px; border-radius: 10px; margin: 20px 0; text-align: center; font-weight: 600; }
+        .date-badge { background: #5A2B35; color: white; padding: 10px 20px; border-radius: 25px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
+        .hashtags { color: #9CAF88; margin-top: 15px; font-size: 0.9em; }
+        .month-divider { text-align: center; padding: 40px 0; margin: 50px 0; position: relative; }
+        .month-divider:before { content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, #7D3C4A, transparent); }
+        .month-title { background: white; padding: 20px 40px; border-radius: 30px; display: inline-block; font-size: 2em; font-weight: 600; color: #7D3C4A; position: relative; z-index: 1; box-shadow: 0 4px 20px rgba(125, 60, 74, 0.15); }
+        .week-header { color: #7D3C4A; font-size: 1.3em; margin: 30px 0 20px 0; padding: 10px 15px; background: #F5F0E8; border-radius: 8px; font-weight: 600; }
+        .stories-section { background: linear-gradient(135deg, #F5F0E8 0%, #E8DDD4 100%); padding: 30px; border-radius: 15px; margin: 40px 0; }
+        .stories-title { color: #7D3C4A; font-size: 2em; margin-bottom: 20px; text-align: center; }
+        .story-day { background: white; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #C9A86A; }
+        .story-day h4 { color: #5A2B35; font-size: 1.4em; margin-bottom: 15px; }
+        ul { margin-left: 20px; margin-top: 10px; }
+        li { margin: 8px 0; }
+        .info-box { background: #FFF9F0; border: 2px solid #C9A86A; border-radius: 12px; padding: 25px; margin: 30px 0; }
+        .info-box h3 { color: #7D3C4A; margin-bottom: 15px; }
+        .footer-giz { background: linear-gradient(135deg, #5A2B35 0%, #7D3C4A 100%); color: white; padding: 40px 30px; text-align: center; margin-top: 60px; }
+        .footer-giz h3 { font-size: 1.8em; margin-bottom: 20px; }
+        .footer-giz p { font-size: 1.1em; margin: 10px 0; opacity: 0.95; }
+        .footer-giz a { color: #C9A86A; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .footer-giz a:hover { color: #FFF; }
+        .nav-top { position: fixed; bottom: 30px; right: 30px; background: #7D3C4A; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(125, 60, 74, 0.3); transition: all 0.3s ease; z-index: 1000; font-size: 1.5em; text-decoration: none; }
+        .nav-top:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(125, 60, 74, 0.4); }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 768px) { 
+            header h1 { font-size: 1.8em; } 
+            header p { font-size: 1em; } 
+            .nav-menu { padding: 15px; gap: 10px; } 
+            .nav-menu a { padding: 8px 15px; font-size: 0.9em; } 
+            .post-title { font-size: 1.4em; } 
+            .content { padding: 20px 15px; } 
+            .month-title { font-size: 1.5em; padding: 15px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌸 CALENDÁRIO EDITORIAL</h1>
+            <p><strong>Dra. Hidiamara Gomes</strong></p>
+            <p>Biomédica | Acupunturista | Estética Integrativa</p>
+            <p class="subtitle">Novembro 2025 - Janeiro 2026 | 24 Posts Completos</p>
+        </header>
+
+        <div class="nav-menu">
+            <a href="#novembro">📅 Novembro</a>
+            <a href="#dezembro">📅 Dezembro</a>
+            <a href="#janeiro">📅 Janeiro</a>
+            <a href="#stories">📖 Stories</a>
+        </div>
+
+        <div class="content">
+            
+            <!-- ==================== NOVEMBRO 2025 ==================== -->
+            <div id="novembro" class="month-divider">
+                <div class="month-title">📅 NOVEMBRO 2025</div>
+            </div>
+
+            <h3 class="week-header">Semana 1: 20 a 26 de Novembro</h3>
+
+            <!-- POST 1 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">20/11 (Quinta)</span>
+                        <h2 class="post-title">Apresentação Terapia Neural</h2>
+                    </div>
+                    <span class="post-type reel">REEL #1</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Sabe aquela dor que não passa? Que você já tentou de tudo?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Mostrar Dra. Hidiamara em consultório<br>
+                        • "Sou pioneira em Terapia Neural aqui em São Mateus"<br>
+                        • Mostrar aplicação (desfocada para criar curiosidade)<br>
+                        • "É uma técnica revolucionária que trata dores crônicas, enxaquecas, problemas digestivos..."
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Vem descobrir como posso te ajudar. Link na bio!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Instrumental suave e profissional<br>
+                        <strong>📝 Texto na tela:</strong> "A REVOLUÇÃO no tratamento da DOR chegou em São Mateus"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Você sabia que existe uma técnica capaz de tratar a DOR de forma integral? 
+
+Sou Dra. Hidiamara e trouxe para São Mateus a TERAPIA NEURAL - uma abordagem revolucionária que vai além dos sintomas e busca a causa raiz do seu problema.
+
+✨ Trato:
+→ Dores crônicas
+→ Enxaquecas e cefaleia
+→ Problemas digestivos
+→ Alergias
+→ Cicatrizes que causam dor
+→ E muito mais!
+
+Com mais de 30 anos de experiência e formações que incluem Biomedicina, Acupuntura e Estética, ofereço um cuidado verdadeiramente integral para você.
+
+Seja pioneira(o) você também! Agende sua consulta.
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#TerapiaNeural #SãoMateus #DorCrônica #Biomédica #SaúdeIntegrativa #Guriri #AcupunturaES</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Salvar reel + Comentar interesse</div>
+            </div>
+
+            <!-- POST 2 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">22/11 (Sábado)</span>
+                        <h2 class="post-title">O que é Terapia Neural?</h2>
+                    </div>
+                    <span class="post-type carrossel">CARROSSEL #1</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📱 SLIDES</h3>
+                    
+                    <div class="slide">
+                        <span class="slide-number">CAPA</span>
+                        <p><strong>TERAPIA NEURAL</strong><br>O que é e como funciona?</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 2</span>
+                        <p><strong>🧠 O QUE É?</strong><br>
+                        É uma técnica terapêutica que utiliza anestésico local em pontos específicos para 'resetar' o sistema nervoso e eliminar bloqueios que causam dor e disfunções.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 3</span>
+                        <p><strong>💉 COMO FUNCIONA?</strong><br>
+                        Aplicamos microinjeções que:<br>
+                        → Regulam o sistema nervoso<br>
+                        → Melhoram a circulação<br>
+                        → Reduzem inflamações<br>
+                        → Restauram o equilíbrio do corpo</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 4</span>
+                        <p><strong>✅ O QUE TRATA?</strong><br>
+                        • Dores crônicas (coluna, articulações)<br>
+                        • Enxaqueca e cefaleia tensional<br>
+                        • Fibromialgia<br>
+                        • Problemas digestivos<br>
+                        • Alergias e rinite<br>
+                        • Cicatrizes que causam dor<br>
+                        • Zumbido no ouvido<br>
+                        • E muito mais!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 5</span>
+                        <p><strong>🎯 POR QUE É DIFERENTE?</strong><br>
+                        Enquanto outros tratamentos focam apenas no sintoma, a Terapia Neural busca a CAUSA RAIZ do problema, tratando o corpo como um todo integrado.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 6</span>
+                        <p><strong>👩‍⚕️ PIONEIRISMO EM SÃO MATEUS</strong><br>
+                        Sou Dra. Hidiamara, biomédica com 30+ anos de experiência, e trouxe essa técnica revolucionária para nossa região.<br><br>
+                        Agende sua avaliação!<br>
+                        📍 Guriri, São Mateus-ES</p>
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Você já ouviu falar em TERAPIA NEURAL? 🧠💉
+
+É a técnica que está revolucionando o tratamento de dores crônicas e diversas condições de saúde - e agora está disponível aqui em São Mateus!
+
+Swipe para entender como essa terapia pode transformar sua qualidade de vida ➡️
+
+Diferente de tratamentos convencionais que apenas mascaram os sintomas, a Terapia Neural busca a origem do problema e restaura o equilíbrio natural do seu corpo.
+
+Com mais de 30 anos dedicados ao cuidado com pessoas, trago essa técnica pioneira para você que busca uma solução real e duradoura.
+
+Vamos conversar sobre o seu caso?</div>
+                    <div class="hashtags">#TerapiaNeural #SãoMateus #DorCrônica #SaúdeIntegrativa #Guriri #Enxaqueca #Fibromialgia #TratamentoNatural</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Salvar carrossel + Comentar dúvidas</div>
+            </div>
+
+            <!-- POST 3 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">24/11 (Segunda)</span>
+                        <h2 class="post-title">Dia da Acupuntura</h2>
+                    </div>
+                    <span class="post-type reel">REEL #2</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "19 de novembro foi o Dia da Acupuntura e eu quero te contar algo..."
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Mostrar agulhas de acupuntura<br>
+                        • "Há anos trabalho com essa medicina milenar que trata desde dores até ansiedade"<br>
+                        • Mostrar aplicação em paciente (com autorização)<br>
+                        • "Acupuntura + Terapia Neural = combinação perfeita para sua saúde"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Que tal experimentar?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Oriental contemporânea<br>
+                        <strong>📝 Texto na tela:</strong> "ACUPUNTURA: Milhares de anos de sabedoria"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Celebrando o Dia da Acupuntura! 🎋
+
+Há anos trabalho com essa medicina milenar que vai muito além do tratamento de dores. A acupuntura trata o ser humano de forma integral: corpo, mente e energia.
+
+🎯 Na minha clínica, você encontra:
+→ Acupuntura tradicional
+→ Terapia Neural (pioneira em São Mateus!)
+→ A combinação perfeita dessas técnicas
+
+Imagine unir a sabedoria milenar da medicina chinesa com a tecnologia da terapia neural? Os resultados são surpreendentes!
+
+✨ Trato:
+• Dores em geral
+• Ansiedade e estresse
+• Insônia
+• Problemas digestivos
+• Enxaqueca
+• E muito mais!
+
+Venha conhecer esse cuidado integral que vai transformar sua saúde.
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Acupuntura #DiaAcupuntura #MedicinaTradicionalChinesa #SãoMateus #TerapiaNeural #SaúdeIntegrativa #Guriri</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Engajamento nos comentários</div>
+            </div>
+
+            <!-- POST 4 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">26/11 (Quarta)</span>
+                        <h2 class="post-title">Luz Pulsada</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #1</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">LUZ PULSADA: tecnologia para sua pele ✨
+
+Você sabia que a Luz Pulsada trata múltiplas questões da pele em um único procedimento?
+
+💎 Benefícios:
+→ Remove manchas e melasma
+→ Depilação definitiva
+→ Reduz vasinhos e vermelhidão
+→ Rejuvenesce a pele
+→ Melhora textura e poros
+
+Sou biomédica especialista em estética com mais de 30 anos de experiência. Aqui você encontra tecnologia de ponta aliada ao conhecimento profundo sobre pele e saúde.
+
+Além dos procedimentos estéticos, ofereço:
+🌿 Terapia Neural (pioneira em São Mateus)
+🎋 Acupuntura
+💉 Botox
+
+Cuidado completo para você brilhar por dentro e por fora!
+
+Agende sua avaliação:
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#LuzPulsada #EstéticaAvançada #SãoMateus #Biomédica #Guriri #DepilaçãoDefinitiva #Melasma #RejuvenescimentoFacial</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar avaliação</div>
+            </div>
+
+            <h3 class="week-header">Semana 2: 27 Nov a 03 Dez</h3>
+
+            <!-- POST 5 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">28/11 (Sexta)</span>
+                        <h2 class="post-title">Depoimento/Resultado</h2>
+                    </div>
+                    <span class="post-type reel">REEL #3</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Ela sofria com enxaqueca há 15 anos..."
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Texto animado contando história de paciente (sem identificação)<br>
+                        • "Tentou remédios, neurologistas, nada resolvia"<br>
+                        • "Após 3 sessões de Terapia Neural + Acupuntura..."<br>
+                        • "Hoje está livre das crises!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Qual é a sua dor? Me conta nos comentários!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Inspiracional e emotiva<br>
+                        <strong>📝 Texto na tela:</strong> "Da DOR à LIBERDADE"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">📖 A história de uma paciente que me emociona...
+
+Ela convivia com enxaqueca há 15 anos. Crises semanais que a impediam de trabalhar, de curtir a família, de viver plenamente.
+
+Tentou neurologistas, remédios, exames... Nada resolvia de verdade.
+
+Quando chegou até mim, combinamos duas técnicas poderosas:
+✨ Terapia Neural
+🎋 Acupuntura
+
+Após algumas sessões, as crises diminuíram. Hoje, ela está livre e voltou a ter qualidade de vida!
+
+💭 Essa é a transformação que eu busco: não apenas tratar sintomas, mas devolver a VIDA às pessoas.
+
+Você também convive com uma dor que parece não ter solução? 
+Vamos conversar sobre o seu caso. Existe tratamento!
+
+Com 30+ anos de experiência em saúde integrativa e estética, estou aqui para te ajudar.
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Enxaqueca #TerapiaNeural #Acupuntura #DorCrônica #SãoMateus #Depoimento #SaúdeIntegrativa #CasoReal</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Comentar experiências</div>
+            </div>
+
+            <!-- POST 6 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">30/11 (Domingo)</span>
+                        <h2 class="post-title">5 Sinais de que você precisa de Terapia Neural</h2>
+                    </div>
+                    <span class="post-type carrossel">CARROSSEL #2</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📱 SLIDES</h3>
+                    
+                    <div class="slide">
+                        <span class="slide-number">CAPA</span>
+                        <p><strong>5 SINAIS</strong><br>de que você precisa de<br><strong>TERAPIA NEURAL</strong></p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 2</span>
+                        <p><strong>1️⃣ DOR QUE NÃO PASSA</strong><br>Você já tentou diversos tratamentos mas sua dor crônica continua? A Terapia Neural pode ser a resposta que você procura.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 3</span>
+                        <p><strong>2️⃣ ENXAQUECAS FREQUENTES</strong><br>Crises de enxaqueca que atrapalham sua rotina e nenhum remédio resolve de verdade? Está na hora de tratar a causa raiz.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 4</span>
+                        <p><strong>3️⃣ CICATRIZES QUE DOEM</strong><br>Cirurgias antigas, cesáreas, cicatrizes que causam desconforto? Elas podem estar criando 'campos interferentes' no seu corpo.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 5</span>
+                        <p><strong>4️⃣ PROBLEMAS DIGESTIVOS PERSISTENTES</strong><br>Gastrite, intestino irritável, refluxo que não melhoram? O sistema nervoso pode estar desregulado.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 6</span>
+                        <p><strong>5️⃣ ALERGIAS E RINITE CONSTANTES</strong><br>Alergia que vai e volta, rinite que incomoda sempre? A Terapia Neural trata o sistema imunológico de forma integral.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 7</span>
+                        <p>Se você se identificou com algum desses sinais, precisa conhecer a Terapia Neural!<br><br>👩‍⚕️ Dra. Hidiamara<br>Biomédica | Acupunturista<br>Pioneira em Terapia Neural em São Mateus<br><br>📍 Guriri, São Mateus-ES</p>
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Você se identificou com algum desses sinais? 👆
+
+A TERAPIA NEURAL é indicada para muito mais do que você imagina! Swipe para descobrir se você precisa desse tratamento revolucionário ➡️
+
+Diferente dos tratamentos convencionais, a Terapia Neural não apenas mascara os sintomas - ela busca e trata a CAUSA do problema, devolvendo o equilíbrio natural do seu corpo.
+
+Como biomédica com mais de 30 anos de experiência, trouxe essa técnica pioneira para São Mateus para oferecer uma solução real para quem sofre com dores e disfunções crônicas.
+
+💬 Me conta: você se identificou com algum desses sinais?
+
+Vamos conversar sobre o seu caso!</div>
+                    <div class="hashtags">#TerapiaNeural #SãoMateus #DorCrônica #Enxaqueca #SaúdeIntegrativa #Biomédica #Guriri #TratamentoNatural #Acupuntura</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Comentar qual sinal</div>
+            </div>
+
+            <!-- POST 7 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">02/12 (Terça)</span>
+                        <h2 class="post-title">Bastidores/Dia a dia</h2>
+                    </div>
+                    <span class="post-type reel">REEL #4</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Vem comigo ver como é um dia de atendimento aqui"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Chegando na clínica<br>
+                        • Preparando consultório<br>
+                        • Atendendo pacientes (de costas/desfocado)<br>
+                        • Estudando/lendo<br>
+                        • "Cada paciente é único, cada tratamento é personalizado"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Quer fazer parte dessa jornada de cuidado?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Upbeat mas profissional<br>
+                        <strong>📝 Texto na tela:</strong> "30+ anos de dedicação ao seu bem-estar"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Um pouquinho do meu dia a dia por aqui! 💙
+
+Cada paciente que chega traz uma história única. E é esse cuidado individual, personalizado, que faz toda a diferença nos resultados.
+
+Minha rotina é feita de:
+→ Atendimentos com Terapia Neural
+→ Sessões de Acupuntura
+→ Procedimentos Estéticos
+→ Muito estudo (nunca paramos de aprender!)
+→ E principalmente: ESCUTA
+
+Porque antes de qualquer agulha ou procedimento, vem a escuta. Entender sua dor, sua história, seus objetivos.
+
+Não é apenas sobre técnicas (embora eu ame estudá-las!). É sobre PESSOAS. É sobre transformar vidas.
+
+E você? Já pensou em cuidar da sua saúde de forma integrativa?
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Bastidores #DiaADia #TerapiaNeural #Acupuntura #SãoMateus #Biomédica #CuidadoIntegral #Guriri #SaúdeIntegrativa</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Curtir e compartilhar</div>
+            </div>
+
+            <!-- ==================== DEZEMBRO 2025 ==================== -->
+            <div id="dezembro" class="month-divider">
+                <div class="month-title">📅 DEZEMBRO 2025</div>
+            </div>
+
+            <h3 class="week-header">Semana 3: 04 a 10 de Dezembro</h3>
+
+            <!-- POST 8 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">04/12 (Quinta)</span>
+                        <h2 class="post-title">Microagulhamento</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #2</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">MICROAGULHAMENTO: renovação profunda da pele ✨
+
+Um dos tratamentos mais procurados na estética! E não é à toa...
+
+💎 Benefícios:
+→ Reduz cicatrizes de acne
+→ Atenua rugas e linhas de expressão
+→ Melhora textura e firmeza da pele
+→ Clareia manchas
+→ Estimula colágeno natural
+→ Trata estrias
+
+Como biomédica especialista em estética, realizo o procedimento com toda segurança e técnica que você merece.
+
+E o melhor: aqui você encontra cuidado COMPLETO!
+💉 Procedimentos estéticos avançados
+🌿 Terapia Neural
+🎋 Acupuntura
+✨ Botox
+
+Da estética à saúde integrativa, tudo em um só lugar.
+
+Agende sua avaliação:
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Microagulhamento #EstéticaAvançada #SãoMateus #Biomédica #RejuvenescimentoFacial #Guriri #Colágeno #TratamentoFacial</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar avaliação</div>
+            </div>
+
+            <!-- POST 9 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">06/12 (Sábado)</span>
+                        <h2 class="post-title">Mitos e Verdades sobre Acupuntura</h2>
+                    </div>
+                    <span class="post-type reel">REEL #5</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Acupuntura dói? Vou te contar a VERDADE!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Mostrar agulhas bem fininhas<br>
+                        • "MITO: Acupuntura dói muito"<br>
+                        • "VERDADE: As agulhas são finíssimas, maioria nem sente"<br>
+                        • "MITO: É só para dor"<br>
+                        • "VERDADE: Trata ansiedade, insônia, digestão, alergias..."<br>
+                        • "MITO: Demora muito para funcionar"<br>
+                        • "VERDADE: Muitos sentem alívio já na primeira sessão"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Tira suas dúvidas nos comentários!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Dinâmica e leve<br>
+                        <strong>📝 Texto na tela:</strong> "MITO ou VERDADE?"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Vamos desmistificar a ACUPUNTURA? 🎋
+
+As três perguntas que mais recebo:
+
+❓"Dói muito?"
+✅ As agulhas são finíssimas - muitos pacientes nem sentem! A sensação é de leve formigamento ou nem isso.
+
+❓"Só serve para tratar dores?"
+✅ A acupuntura trata o corpo integralmente: ansiedade, insônia, problemas digestivos, alergias, estresse, enxaqueca e muito mais!
+
+❓"Demora muito para fazer efeito?"
+✅ Muitos pacientes sentem alívio já na primeira sessão! Claro que cada caso é único, mas os resultados costumam surpreender.
+
+Com anos de experiência em Acupuntura e agora com a Terapia Neural (pioneira em São Mateus!), ofereço tratamentos que realmente transformam vidas.
+
+💬 Qual sua dúvida sobre acupuntura? Me conta aqui! 
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Acupuntura #MitosEVerdades #MedicinaTradicionalChinesa #SãoMateus #TerapiaNeural #DorCrônica #Guriri #SaúdeIntegrativa</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Comentar dúvidas</div>
+            </div>
+
+            <!-- POST 10 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">08/12 (Segunda)</span>
+                        <h2 class="post-title">Prepare sua pele para o Verão</h2>
+                    </div>
+                    <span class="post-type carrossel">CARROSSEL #3</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📱 SLIDES</h3>
+                    
+                    <div class="slide">
+                        <span class="slide-number">CAPA</span>
+                        <p><strong>PREPARE<br>SUA PELE<br>PARA O VERÃO</strong><br>☀️</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 2</span>
+                        <p><strong>🌊 DEZEMBRO É O MELHOR MÊS!</strong><br>Para começar tratamentos que vão te deixar radiante no verão. Alguns procedimentos precisam de tempo - comece agora!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 3</span>
+                        <p><strong>💡 LUZ PULSADA</strong><br>Agora é a hora! Trate:<br>• Manchas solares<br>• Melasma<br>• Vasinhos<br>• Depilação definitiva<br><br>Resultados incríveis em poucas sessões!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 4</span>
+                        <p><strong>✨ MICROAGULHAMENTO</strong><br>Para uma pele:<br>• Firme<br>• Uniforme<br>• Renovada<br>• Sem marcas de acne<br>• Radiante<br><br>Seu glow natural!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 5</span>
+                        <p><strong>💉 BOTOX</strong><br>Aproveite para:<br>• Suavizar linhas de expressão<br>• Ter aquele up para as festas<br>• Resultado natural<br><br>Procedimento rápido, resultado imediato!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 6</span>
+                        <p><strong>🌿 E MAIS!</strong><br>Enquanto cuida da estética, que tal cuidar da saúde integral?<br><br>• Terapia Neural para dores<br>• Acupuntura para bem-estar<br>• Equilíbrio de dentro para fora<br><br>Agende já sua avaliação!<br>📍 Guriri, São Mateus-ES</p>
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">DEZEMBRO: o mês perfeito para preparar sua pele! ☀️✨
+
+Swipe e descubra os tratamentos ideais para você arrasar no verão ➡️
+
+Enquanto todo mundo deixa para janeiro, você pode começar AGORA e chegar nas festas e no verão com aquela pele dos sonhos!
+
+Como biomédica especialista em estética há 30+ anos, sei exatamente quais tratamentos vão te dar os melhores resultados.
+
+E o diferencial? Aqui você cuida da beleza E da saúde:
+💎 Procedimentos estéticos de ponta
+🌿 Terapia Neural (pioneira em São Mateus)
+🎋 Acupuntura
+
+Beleza que vem de dentro para fora!
+
+Vamos agendar sua avaliação?</div>
+                    <div class="hashtags">#VerãoNoES #PrepareSuaPele #SãoMateus #EstéticaAvançada #LuzPulsada #Microagulhamento #Botox #Guriri #Biomédica</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Salvar e agendar</div>
+            </div>
+
+            <!-- POST 11 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">10/12 (Quarta)</span>
+                        <h2 class="post-title">Educativo sobre Dor Crônica</h2>
+                    </div>
+                    <span class="post-type reel">REEL #6</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Você sabia que a dor crônica não é só física?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (25s):</strong>
+                        • Gráficos/animações simples<br>
+                        • "Dor crônica envolve: sistema nervoso, emoções, memória corporal"<br>
+                        • "Por isso remédios apenas mascaram"<br>
+                        • "A Terapia Neural trata o sistema nervoso como um todo"<br>
+                        • "Reseta a memória da dor"<br>
+                        • "Devolve o equilíbrio"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Sofre com dor crônica? Me manda uma mensagem!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Explicativa, tipo documentário<br>
+                        <strong>📝 Texto na tela:</strong> "Entenda sua DOR"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Por que sua dor não passa? Vou te explicar! 🧠
+
+A DOR CRÔNICA não é apenas física. Ela envolve:
+→ Sistema nervoso desregulado
+→ Memória corporal da dor
+→ Componentes emocionais
+→ Inflamação persistente
+→ Ciclos que se repetem
+
+É por isso que apenas tomar remédio não resolve! Você está tratando apenas o sintoma, não a causa.
+
+💡 A TERAPIA NEURAL age diferente:
+✓ Regula o sistema nervoso
+✓ "Apaga" a memória da dor
+✓ Quebra o ciclo vicioso
+✓ Trata a causa raiz
+✓ Restaura o equilíbrio natural do corpo
+
+Como pioneira dessa técnica em São Mateus, tenho visto transformações incríveis em pacientes que sofriam há anos.
+
+Combinando Terapia Neural + Acupuntura, os resultados são ainda mais potentes!
+
+Você não precisa conviver com a dor. Existe tratamento!
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#DorCrônica #TerapiaNeural #SãoMateus #DorNasCostas #Fibromialgia #Biomédica #SaúdeIntegrativa #Guriri #Acupuntura</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Mandar mensagem</div>
+            </div>
+
+            <h3 class="week-header">Semana 4: 11 a 17 de Dezembro</h3>
+
+            <!-- POST 12 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">12/12 (Sexta)</span>
+                        <h2 class="post-title">Peeling</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #3</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">PEELING: renovação que transforma ✨
+
+Quer uma pele mais jovem, uniforme e radiante? O peeling é um dos tratamentos mais eficazes!
+
+🌟 Benefícios:
+→ Remove manchas e melasma
+→ Reduz marcas de acne
+→ Suaviza rugas finas
+→ Uniformiza o tom da pele
+→ Estimula renovação celular
+→ Deixa a pele luminosa
+
+Como biomédica especialista, trabalho com diferentes tipos de peeling, sempre escolhendo o mais adequado para seu tipo de pele e objetivo.
+
+Aqui você encontra:
+💎 Tecnologia de ponta em estética
+🌿 Terapia Neural (pioneira em São Mateus)
+🎋 Acupuntura
+💉 Botox
+
+Cuidado completo para você brilhar!
+
+Agende sua avaliação:
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Peeling #TratamentoFacial #Melasma #SãoMateus #Biomédica #RejuvenescimentoFacial #Guriri #EstéticaAvançada #ManchasNaPele</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar avaliação</div>
+            </div>
+
+            <!-- POST 13 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">14/12 (Domingo)</span>
+                        <h2 class="post-title">Trajetória Profissional</h2>
+                    </div>
+                    <span class="post-type reel">REEL #7</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Larguei 10 anos de estabilidade no banco para seguir meu sonho..."
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (25s):</strong>
+                        • Fotos antigas intercaladas<br>
+                        • "Mudei para Manaus para estudar com bebê pequeno"<br>
+                        • "Fiz 4 graduações e pós-graduações"<br>
+                        • "Dei aulas, atendi, não parei de estudar"<br>
+                        • "Voltei para o ES e trouxe inovação"<br>
+                        • "Hoje sou pioneira em Terapia Neural em São Mateus"<br>
+                        • "São 30+ anos dedicados a VOCÊ"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Quer ser atendida por alguém que respira isso há 30 anos?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Inspiracional e emocional<br>
+                        <strong>📝 Texto na tela:</strong> "30 ANOS de dedicação"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Minha história é de CORAGEM e AMOR pelo que faço 💙
+
+Em 1991, larguei a estabilidade de 10 anos no Banco do Brasil. Queria estar presente para meus filhos e seguir meu propósito: cuidar de pessoas.
+
+Mudei para Manaus com meu bebê pequeno para estudar Estética (porque no ES não tinha o curso!). Fiz tecnólogo, pós-graduações, dei aulas em faculdade...
+
+Voltei ao ES, fiz Biomedicina, mais especializações, nunca parei de estudar.
+
+E sabe o que me move até hoje? A mesma paixão do primeiro dia!
+
+Agora, com 30+ anos de experiência, trouxe a TERAPIA NEURAL para São Mateus - uma técnica revolucionária que está transformando a vida de quem sofre com dores crônicas.
+
+Junto com Acupuntura e procedimentos estéticos avançados, ofereço um cuidado que só décadas de dedicação podem proporcionar.
+
+Cada paciente é único. Cada tratamento é pensado com carinho. Cada resultado me emociona.
+
+Essa sou eu: Dra. Hidiamara 👩‍⚕️
+
+Vem fazer parte dessa história de cuidado?
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#MinhaHistória #TerapiaNeural #Biomédica #SãoMateus #Acupuntura #30AnosDeExperiência #Guriri #Inspiração #DrHidiamara</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Compartilhar história</div>
+            </div>
+
+            <!-- POST 14 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">16/12 (Terça)</span>
+                        <h2 class="post-title">Botox Natural</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #4</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">BOTOX: expressão natural, sem rugas exageradas ✨
+
+Sabe aquela ideia de que Botox deixa o rosto 'congelado'? Isso é coisa do passado (e de mãos inexperientes!).
+
+Quando aplicado por profissional qualificado, o Botox:
+→ Suaviza rugas e linhas de expressão
+→ Mantém suas expressões naturais
+→ Previne o envelhecimento
+→ Resultados em 3-7 dias
+→ Dura 4-6 meses
+→ Procedimento rápido e seguro
+
+💉 Como biomédica especialista em estética há 30+ anos, meu objetivo é realçar sua beleza natural - nunca exagerar.
+
+Aqui você encontra:
+💎 Botox com resultado natural
+🌿 Terapia Neural (pioneira em São Mateus)
+🎋 Acupuntura
+✨ Procedimentos estéticos avançados
+
+Beleza com saúde e equilíbrio!
+
+Agende sua avaliação:
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Botox #SãoMateus #Biomédica #ToxinaBotulínica #EstéticaAvançada #Guriri #BeautificaçãoNatural #RejuvenescimentoFacial</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar avaliação</div>
+            </div>
+
+            <h3 class="week-header">Semana 5: 18 a 24 de Dezembro (NATAL)</h3>
+
+            <!-- POST 15 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">18/12 (Quinta)</span>
+                        <h2 class="post-title">Dicas de Autocuidado para as Festas</h2>
+                    </div>
+                    <span class="post-type reel">REEL #8</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "As festas estão chegando e você está exausta?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Dra. Hidiamara falando direto<br>
+                        • "3 dicas para chegar bem nas festas:"<br>
+                        • "1. Hidrate-se MUITO"<br>
+                        • "2. Durma bem - seu corpo agradece"<br>
+                        • "3. Considere acupuntura para energia e equilíbrio"<br>
+                        • Mostrar sessão de acupuntura<br>
+                        • "Dezembro é corrido, mas você merece se sentir bem!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Vem cuidar de você antes do Natal?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Relaxante e acolhedora<br>
+                        <strong>📝 Texto na tela:</strong> "AUTOCUIDADO não é luxo"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Dezembro está corrido demais? Você não está sozinha! 🎄
+
+As festas são maravilhosas, mas também podem ser exaustivas. Enquanto você cuida de tudo e de todos, não esquece de VOCÊ?
+
+💙 3 Dicas para chegar bem no Natal:
+
+1️⃣ HIDRATAÇÃO
+Beba muita água! A correria e o calor pedem ainda mais hidratação.
+
+2️⃣ SONO DE QUALIDADE
+Seu corpo se recupera durante o sono. Não sacrifique suas horas de descanso!
+
+3️⃣ ACUPUNTURA
+Uma sessão pode: reduzir ansiedade, melhorar energia, equilibrar suas emoções e te preparar para aproveitar as festas COM QUALIDADE.
+
+Também ofereço Terapia Neural para aquelas dores que aparecem com o estresse!
+
+Você merece aproveitar o Natal se sentindo BEM. Vem se cuidar?
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Autocuidado #Natal2025 #Acupuntura #SãoMateus #BemEstar #FestasDeNatal #TerapiaNeural #Guriri #SaúdeMental #Equilíbrio</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar sessão</div>
+            </div>
+
+            <!-- POST 16 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">24/12 (Quarta)</span>
+                        <h2 class="post-title">Mensagem de Natal</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #5</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Um Natal de saúde, beleza e gratidão 🎄✨
+
+Neste Natal, meu desejo é que você celebre com:
+💚 Saúde plena no corpo
+💚 Paz na mente
+💚 Amor no coração
+
+Obrigada por confiar em mim ao longo de 2025! Cada paciente, cada sorriso, cada transformação me lembra porque escolhi essa profissão há 30 anos.
+
+Que 2026 traga ainda mais cuidado, inovação e bem-estar para todos nós!
+
+🎁 E para você que ainda não me conhece: que tal começar o ano novo cuidando de você de verdade?
+
+Ofereço:
+🌿 Terapia Neural (pioneira em São Mateus)
+🎋 Acupuntura
+💎 Procedimentos Estéticos Avançados
+💉 Botox
+
+📍 Guriri, São Mateus - ES
+
+Feliz Natal! 🎄</div>
+                    <div class="hashtags">#FelizNatal #Natal2025 #Gratidão #SãoMateus #TerapiaNeural #Acupuntura #Biomédica #Guriri #SaúdeEBeleza</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Curtir e compartilhar</div>
+            </div>
+
+            <!-- ==================== JANEIRO 2026 ==================== -->
+            <div id="janeiro" class="month-divider">
+                <div class="month-title">📅 JANEIRO 2026</div>
+            </div>
+
+            <h3 class="week-header">Semana 6: 26 Dez 2025 a 01 Jan 2026 (ANO NOVO)</h3>
+
+            <!-- POST 17 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">26/12 (Sexta)</span>
+                        <h2 class="post-title">Reflexão de Ano Novo</h2>
+                    </div>
+                    <span class="post-type reel">REEL #9</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "2025 está acabando... e aquela dor ainda está aí?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (22s):</strong>
+                        • Imagens suaves, reflexivas<br>
+                        • "Mais um ano convivendo com dor?"<br>
+                        • "Mais um ano adiando o autocuidado?"<br>
+                        • "2026 pode ser diferente"<br>
+                        • "Você merece viver sem dor"<br>
+                        • "Terapia Neural + Acupuntura + Estética"<br>
+                        • "Comece o ano cuidando de VOCÊ"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Vamos fazer 2026 o ano da sua transformação?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Reflexiva e esperançosa<br>
+                        <strong>📝 Texto na tela:</strong> "2026: O ANO DO SEU BEM-ESTAR"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Você vai levar essa dor para 2026? 💭
+
+Olha, eu sei que a vida é corrida. Sei que você cuida de todo mundo. Sei que sempre fica para depois...
+
+Mas e se 2026 fosse diferente?
+E se fosse o ano em que você finalmente:
+→ Se livra da dor crônica
+→ Trata aquela enxaqueca
+→ Cuida da sua saúde de verdade
+→ Se sente BONITA por dentro e por fora?
+
+Não precisa ser difícil. Eu estou aqui para te ajudar.
+
+Com 30+ anos de experiência, ofereço:
+🌿 Terapia Neural (pioneira em São Mateus!)
+🎋 Acupuntura
+💎 Procedimentos Estéticos
+💉 Botox
+
+Vamos começar 2026 juntas?
+Sua primeira consulta pode ser o primeiro passo para uma vida sem dor.
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#AnoNovo #2026 #TerapiaNeural #SãoMateus #DorCrônica #Acupuntura #Transformação #Guriri #PropósitoDeAnoNovo</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Agendar primeira consulta</div>
+            </div>
+
+            <!-- POST 18 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">28/12 (Domingo)</span>
+                        <h2 class="post-title">Metas de Saúde para 2026</h2>
+                    </div>
+                    <span class="post-type carrossel">CARROSSEL #4</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📱 SLIDES</h3>
+                    
+                    <div class="slide">
+                        <span class="slide-number">CAPA</span>
+                        <p><strong>METAS DE<br>SAÚDE & BELEZA<br>PARA 2026</strong><br>✨</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 2</span>
+                        <p><strong>🎯 META 1: VIVER SEM DOR</strong><br>Chega de conviver com dor crônica! A Terapia Neural pode ser sua aliada para um 2026 livre e leve.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 3</span>
+                        <p><strong>🎯 META 2: CUIDAR DA MENTE</strong><br>Ansiedade, insônia, estresse? A Acupuntura equilibra suas emoções e te devolve a paz interior.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 4</span>
+                        <p><strong>🎯 META 3: PELE RADIANTE</strong><br>Invista em você! Luz pulsada, microagulhamento e peelings para uma pele dos sonhos em 2026.</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 5</span>
+                        <p><strong>🎯 META 4: AUTOESTIMA LÁ EM CIMA</strong><br>Botox natural para você se olhar no espelho e amar o que vê!</p>
+                    </div>
+
+                    <div class="slide">
+                        <span class="slide-number">SLIDE 6</span>
+                        <p><strong>🎯 META 5: SAÚDE INTEGRAL</strong><br>Não escolha entre saúde OU beleza. Tenha os dois!<br><br>Aqui você encontra cuidado completo:<br>🌿 Terapia Neural<br>🎋 Acupuntura<br>💎 Estética Avançada<br><br>Vamos juntas em 2026!<br>📍 Guriri, São Mateus-ES</p>
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Suas metas de 2026 incluem VOCÊ? ✨
+
+Swipe e descubra como transformar sua saúde e beleza no próximo ano ➡️
+
+Não quero que você apenas LISTE metas - quero te ajudar a CONQUISTÁ-LAS!
+
+Com mais de 30 anos de experiência e técnicas que vão da Terapia Neural (pioneira em São Mateus!) ao Botox, posso te oferecer um plano completo para 2026 ser O SEU ANO.
+
+💬 Qual dessas metas mais faz sentido para você? Me conta nos comentários!
+
+Vamos fazer acontecer juntas?</div>
+                    <div class="hashtags">#Metas2026 #AnoNovo #TerapiaNeural #Acupuntura #SãoMateus #SaúdeIntegral #Biomédica #Guriri #PropósitosDeAnoNovo</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Comentar meta principal</div>
+            </div>
+
+            <!-- POST 19 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">31/12 (Quarta)</span>
+                        <h2 class="post-title">Reveillon</h2>
+                    </div>
+                    <span class="post-type estatico">POST ESTÁTICO #6</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">Que 2026 seja o ano do seu BEM-ESTAR! 🎆✨
+
+Nesta virada, meu desejo é que você:
+💫 Cuide da sua saúde com prioridade
+💫 Se olhe no espelho com amor
+💫 Viva sem dores limitantes
+💫 Priorize SEU bem-estar
+
+E eu estarei aqui para te ajudar em cada passo dessa jornada!
+
+Obrigada por cada paciente que confiou em mim em 2025. Vocês são a razão de eu continuar estudando, inovando e me dedicando há 30+ anos.
+
+🎁 NOVIDADE DE 2026:
+Continuarei trazendo o melhor da Terapia Neural (pioneira em São Mateus!), Acupuntura e Estética Avançada para você.
+
+Vamos fazer de 2026 extraordinário?
+
+📍 Guriri, São Mateus - ES
+🗓️ Agenda 2026 já está aberta!
+
+Feliz Ano Novo! 🥂</div>
+                    <div class="hashtags">#FelizAnoNovo #2026 #Reveillon #SãoMateus #TerapiaNeural #Acupuntura #Biomédica #Guriri #AnoNovo #BemEstar</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Curtir e celebrar</div>
+            </div>
+
+            <h3 class="week-header">Semana 7: 02 de Janeiro 2026</h3>
+
+            <!-- POST 20 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div>
+                        <span class="date-badge">02/01 (Sexta)</span>
+                        <h2 class="post-title">Começou 2026 - Hora de Agir!</h2>
+                    </div>
+                    <span class="post-type reel">REEL #10</span>
+                </div>
+
+                <div class="post-section">
+                    <h3>🎬 ROTEIRO</h3>
+                    <div class="roteiro-item">
+                        <strong>GANCHO (3s):</strong>
+                        "Janeiro chegou! Você já agendou seu autocuidado?"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>DESENVOLVIMENTO (20s):</strong>
+                        • Agenda sendo aberta<br>
+                        • "Não deixa para depois"<br>
+                        • "As vagas para janeiro estão abrindo"<br>
+                        • "Terapia Neural, Acupuntura, Estética"<br>
+                        • Mostrar consultório<br>
+                        • "Sua saúde não pode esperar"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>CTA (5s):</strong>
+                        "Chama no WhatsApp e garante sua vaga!"
+                    </div>
+                    <div class="roteiro-item">
+                        <strong>🎵 Música:</strong> Energética e motivacional<br>
+                        <strong>📝 Texto na tela:</strong> "2026 COMEÇOU - E VOCÊ?"
+                    </div>
+                </div>
+
+                <div class="post-section">
+                    <h3>📝 LEGENDA</h3>
+                    <div class="legenda-box">BOM DIA, 2026! E aí, vai ficar só nas promessas? 💪
+
+Janeiro já começou e a pergunta que não quer calar: você já agendou seu autocuidado ou vai deixar para "quando der tempo"?
+
+Olha, vou te contar um segredo: quem marca em janeiro consegue os melhores horários e já começa o ano COM AÇÃO!
+
+📅 Agenda Janeiro/2026 ABERTA para:
+🌿 Terapia Neural (dores crônicas, enxaquecas, etc)
+🎋 Acupuntura (ansiedade, insônia, bem-estar)
+💡 Luz Pulsada (manchas, pelos, rejuvenescimento)
+💉 Botox
+✨ Microagulhamento e Peeling
+
+Não espera a dor piorar.
+Não espera o espelho te incomodar.
+Não espera "ter tempo".
+
+O tempo é AGORA! 
+
+Como pioneira em Terapia Neural em São Mateus e com 30+ anos de experiência, posso te garantir: quanto antes você começar, antes verá resultados.
+
+Chama no WhatsApp e vamos transformar 2026 juntas!
+
+📍 Guriri, São Mateus - ES</div>
+                    <div class="hashtags">#Janeiro2026 #AgendaAberta #TerapiaNeural #SãoMateus #Acupuntura #Biomédica #Guriri #ComeceAgora #2026Chegou</div>
+                </div>
+
+                <div class="cta-box">💡 CTA: Chamar no WhatsApp AGORA</div>
+            </div>
+
+            <!-- ==================== STORIES ==================== -->
+            <div id="stories">
+                <div class="stories-section">
+                    <h2 class="stories-title">📖 "Diário de uma Biomédica"</h2>
+                    
+                    <div class="info-box" style="background: white;">
+                        <h3>💡 Conceito dos Stories</h3>
+                        <p>A Dra. Hidiamara compartilha sua rotina, aprendizados e reflexões de forma genuína, humanizando sua jornada enquanto educa e inspira.</p>
+                        <br>
+                        <p><strong>Frequência:</strong> 2-3 stories por tema, 2-3x por semana</p>
+                    </div>
+
+                    <div class="story-day">
+                        <h4>📌 SEGUNDA-FEIRA: "Segunda da Transformação"</h4>
+                        <p><strong>O que postar:</strong></p>
+                        <ul>
+                            <li>Mostrar caso de transformação da semana (sem identificar paciente)</li>
+                            <li>Compartilhar emoção genuína de ver resultados</li>
+                            <li>Antes/depois de procedimento ou relato de melhora com Terapia Neural/Acupuntura</li>
+                        </ul>
+                        <br>
+                        <p><strong>✨ Por que funciona:</strong> Mostra resultados reais, gera identificação e prova social.</p>
+                    </div>
+
+                    <div class="story-day">
+                        <h4>📌 QUARTA-FEIRA: "Estudando Sempre"</h4>
+                        <p><strong>O que postar:</strong></p>
+                        <ul>
+                            <li>Foto de livro/artigo que está estudando</li>
+                            <li>Curso online que está fazendo</li>
+                            <li>Curiosidade sobre Terapia Neural, Acupuntura ou estética</li>
+                        </ul>
+                        <br>
+                        <p><strong>✨ Por que funciona:</strong> Reforça autoridade, mostra atualização constante, gera confiança.</p>
+                    </div>
+
+                    <div class="story-day">
+                        <h4>📌 SEXTA-FEIRA: "Sexta do Autocuidado"</h4>
+                        <p><strong>O que postar:</strong></p>
+                        <ul>
+                            <li>Dica rápida e prática de autocuidado</li>
+                            <li>Receita de chá, técnica de respiração, alongamento</li>
+                            <li>Compartilhar algo que ela mesma faz</li>
+                        </ul>
+                        <br>
+                        <p><strong>✨ Por que funciona:</strong> Conteúdo de valor, aplicável, gera salvamentos e compartilhamentos.</p>
+                    </div>
+
+                    <div class="info-box" style="background: #FFF9F0; margin-top: 30px;">
+                        <h3>💡 Dicas para Stories</h3>
+                        <ol>
+                            <li><strong>Seja autêntica:</strong> Não precisa ser perfeito</li>
+                            <li><strong>Fale olhando para câmera:</strong> Cria conexão</li>
+                            <li><strong>Use luz natural:</strong> Sempre que possível</li>
+                            <li><strong>Seja breve:</strong> 15-30 segundos é ideal</li>
+                            <li><strong>Mostre emoção:</strong> Pessoas se conectam com sentimentos</li>
+                            <li><strong>Varie formatos:</strong> Fala, texto, foto</li>
+                            <li><strong>Interaja:</strong> Responda as mensagens!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER GIZ MARKETING -->
+        <div class="footer-giz">
+            <h3>📱 Material Produzido por</h3>
+            <p><strong>Giz Marketing Digital</strong></p>
+            <p>Estratégias de social media que geram resultados</p>
+            <br>
+            <p>📞 WhatsApp: <a href="https://wa.me/5528999892676" target="_blank">(28) 99989-2676</a></p>
+            <p>📧 Email: <a href="mailto:contato@gizmarketing.net">contato@gizmarketing.net</a></p>
+            <br>
+            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 20px;">Calendário Editorial | Novembro 2025 - Janeiro 2026 | 20 Posts Completos</p>
+        </div>
+    </div>
+
+    <a href="#" class="nav-top">↑</a>
+</body>
+</html>
